@@ -27,15 +27,15 @@ public class App {
     				LandlordUI.registerLandlordAccount(sc);
     				break;
     			case 2:
-    				LandlordUI.logInLandlordAccount();
+    				LandlordUI.logInLandlordAccount(sc);
     				break;
 //    			case 3:
-//    				LandlordUI.managePropertyList(sc);
+//    				LandlordUI.createProperty(sc);
 //    				break;
 //    			case 4:
-//    				LandlordUI.updateProperty(sc);
+//    				LandlordUI.updatePropertyAndStatus(sc);
 //    				break;
-//    			case 5:
+////    			case 5:
 //    				LandlordUI.receiveAndReviewTanentOffer();
 //    				break;
 //    			case 6:
@@ -79,12 +79,12 @@ public class App {
     			case 1:
     				landlordLogin(sc);
     				break;
-//    			case 2:
-//    				RenterUI.renterLogin(sc);
-//    				break;
-//    			case 3:
-//    				RenterUI.renterRegistration(sc);
-//    				break;
+    			case 2:
+    				RenterUI.renterLogin(sc);
+    				break;
+    			case 3:
+    				RenterUI.renterRegistration(sc);
+    				break;
     			case 0:
     				System.out.println("Thanks for using the services");
     				break;
