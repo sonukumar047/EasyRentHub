@@ -54,42 +54,42 @@ public class LandlordUI {
 	}
 
 	
-//	public static void createProperty(Scanner sc) {
-//		
-//		System.out.print("Enter rent amount ");
-//		double amount = sc.nextDouble();
-//		System.out.print("Enter location ");
-//		String location = sc.next();
-//		System.out.print("Enter property details");
-//		String propertyDet = sc.next();	
-//		try {
-//			//Create an object of Service Layer here
-//			LandlordService landlordService = new LandlordServiceImpl();
-//			Landlord landlord = landlordService.getCompanyObjectByName(companyName);
-//			
-//			//Create an object of Plan for given data
-//			Property plan = new Property(amount, location, propertyDet);
-//						
-//			Set<AgeBandWisePremiumForPlan> ageBandWisePremiumForPlanSet = new HashSet<AgeBandWisePremiumForPlan>();
-//			int ageBands[][] = {{18, 35}, {36, 50}, {51, 70}};
-//			for(int ageBand[] : ageBands) {
-//				System.out.println("For age band" + ageBand[0] + "-" + ageBand[1]);
-//				System.out.print("Enter premium ");
-//				double premiumAmount = sc.nextDouble();
-//				System.out.print("Enter surcharge ");
-//				double surchargeAmount = sc.nextDouble();
-//				ageBandWisePremiumForPlanSet.add(new AgeBandWisePremiumForPlan(plan, null, premiumAmount, surchargeAmount));				
-//			}
-//			
-//			plan.setAgeBandWisePremiumSet(ageBandWisePremiumForPlanSet);
-//			
-//			PlanService planService = new PlanServiceImpl();
-//			planService.addPlan(plan);
-//			System.out.println("Plan added successfully");
-//		}catch(SomeThingWentWrongException | NoRecordFoundException ex) {
-//			System.out.println(ex.getMessage());
-//		}
-//	}
+	public static void createProperty(Scanner sc) {
+		
+		System.out.print("Enter rent amount ");
+		double amount = sc.nextDouble();
+		System.out.print("Enter location ");
+		String location = sc.next();
+		System.out.print("Enter property details");
+		String propertyDet = sc.next();	
+		try {
+			//Create an object of Service Layer here
+			LandlordService landlordService = new LandlordServiceImpl();
+			Landlord landlord = landlordService.getCompanyObjectByName(companyName);
+			
+			//Create an object of Plan for given data
+			Property plan = new Property(amount, location, propertyDet);
+						
+			Set<AgeBandWisePremiumForPlan> ageBandWisePremiumForPlanSet = new HashSet<AgeBandWisePremiumForPlan>();
+			int ageBands[][] = {{18, 35}, {36, 50}, {51, 70}};
+			for(int ageBand[] : ageBands) {
+				System.out.println("For age band" + ageBand[0] + "-" + ageBand[1]);
+				System.out.print("Enter premium ");
+				double premiumAmount = sc.nextDouble();
+				System.out.print("Enter surcharge ");
+				double surchargeAmount = sc.nextDouble();
+				ageBandWisePremiumForPlanSet.add(new AgeBandWisePremiumForPlan(plan, null, premiumAmount, surchargeAmount));				
+			}
+			
+			plan.setAgeBandWisePremiumSet(ageBandWisePremiumForPlanSet);
+			
+			PlanService planService = new PlanServiceImpl();
+			planService.addPlan(plan);
+			System.out.println("Plan added successfully");
+		}catch(SomeThingWentWrongException | NoRecordFoundException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 	
 	public static void updatePropertyAndStatus(Scanner sc) {
 		System.out.print("Enter id ");
