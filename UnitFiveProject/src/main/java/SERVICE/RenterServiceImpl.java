@@ -13,45 +13,45 @@ public class RenterServiceImpl implements RenterService {
 	@Override
 	public List<Object[]> getRenterList() throws SomeThingWentWrongException, NoRecordFoundException {
 		//Create an object of CustomerDAO
-		RenterDAO customerDAO = new RenterDAOImpl();
-		return customerDAO.getRenterList();
+		RenterDAO renterDAO = new RenterDAOImpl();
+		return renterDAO.getRenterList();
 	}
 
 	@Override
 	public void login(String username, String password) throws SomeThingWentWrongException, NoRecordFoundException {
 		// TODO Auto-generated method stub
-		RenterDAO customerDAO = new RenterDAOImpl();
-		customerDAO.login(username, password);		
+		RenterDAO renterDAO = new RenterDAOImpl();
+		renterDAO.login(username, password);		
 	}
 
 	@Override
-	public void ViewPurchasedProperty() throws SomeThingWentWrongException, NoRecordFoundException {
+	public void ViewRentedProperty() throws SomeThingWentWrongException, NoRecordFoundException {
 		// TODO Auto-generated method stub
-		RenterDAO customerDAO = new RenterDAOImpl();
-		customerDAO.ViewPurchasedProperty();		
+		RenterDAO renterDAO = new RenterDAOImpl();
+		renterDAO.ViewRentedProperty();		
 	}
 
 
 	@Override
 	public void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException {
 		// TODO Auto-generated method stub
-		RenterDAO customerDAO = new RenterDAOImpl();
-		customerDAO.changePassword( oldPassword,  newPassword);
+		RenterDAO renterDAO = new RenterDAOImpl();
+		renterDAO.changePassword( oldPassword,  newPassword);
 		
 	}
 
 	@Override
 	public void deleteAccount() throws SomeThingWentWrongException {
-		RenterDAO customerDAO = new RenterDAOImpl();
-		customerDAO.deleteAccount();
+		RenterDAO renterDAO = new RenterDAOImpl();
+		renterDAO.deleteAccount();
 		
 	}
 
 	@Override
 	public void addRenter(Renter customer) throws SomeThingWentWrongException {
 		// TODO Auto-generated method stub
-		RenterDAO customerDAO = new RenterDAOImpl();
-		customerDAO.addRenter(customer);
+		RenterDAO renterDAO = new RenterDAOImpl();
+		renterDAO.addRenter(customer);
 		
 	}
 

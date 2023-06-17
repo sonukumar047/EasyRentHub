@@ -58,18 +58,18 @@ public class RenterDAOImpl implements RenterDAO {
 	}
 
 	@Override
-	public void ViewPurchasedProperty() throws SomeThingWentWrongException, NoRecordFoundException {
+	public void ViewRentedProperty() throws SomeThingWentWrongException, NoRecordFoundException {
 		// TODO Auto-generated method stub
 		EntityManager em = null;
 		try {
 			em = EMUtils.getEntityManager();
 			Renter renter = em.find(Renter.class, LoggedInUserId.loggedInUserId);
-			Set<Property> purchasedCarList = renter.getPropertySet();
+			Set<Property> rentedPropertyList = renter.getPropertySet();
 
-			if (purchasedCarList.isEmpty()) {
-				throw new NoRecordFoundException("No Property Purched By You");
+			if (rentedPropertyList.isEmpty()) {
+				throw new NoRecordFoundException("No Property Rented By You");
 			}
-			for (Property p : purchasedCarList) {
+			for (Property p : rentedPropertyList) {
 				System.out.println("Id : " + p.getId() + " Name : " + p.getPropertyName() + " Price : " + p.getRentPrice()
 						+ " Estd Year : " + p.getEstd());
 			}
@@ -91,7 +91,7 @@ public class RenterDAOImpl implements RenterDAO {
 		EntityManager em = null;
 		try {
 			em = EMUtils.getEntityManager();
-			Query query = em.createQuery("SELECT count(c) FROM Customer c WHERE password = :oldPassword AND id = :id");
+			Query query = em.createQuery("SELECT count(r) FROM Renter r WHERE password = :oldPassword AND id = :id");
 			query.setParameter("oldPassword", oldPassword);
 			query.setParameter("id", LoggedInUserId.loggedInUserId);
 			Long userCount = (Long) query.getSingleResult();
@@ -100,10 +100,10 @@ public class RenterDAOImpl implements RenterDAO {
 				throw new SomeThingWentWrongException("Invalid old password");
 			}
 			// You are here means all checks done, We can proceed for changing the password
-			Renter customer = em.find(Renter.class, LoggedInUserId.loggedInUserId);
+			Renter renter = em.find(Renter.class, LoggedInUserId.loggedInUserId);
 			EntityTransaction et = em.getTransaction();
 			et.begin();
-			customer.setPassword(newPassword);
+			renter.setPassword(newPassword);
 			et.commit();
 		} catch (PersistenceException ex) {
 			throw new SomeThingWentWrongException("Unable to process request, try again later");

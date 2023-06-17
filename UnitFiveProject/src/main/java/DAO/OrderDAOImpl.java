@@ -15,7 +15,7 @@ import jakarta.persistence.Query;
 public class OrderDAOImpl implements OrderDAO {
 
 	@Override
-	public void purchaseProperty(int propertyId, String propertyName) throws SomeThingWentWrongException {
+	public void renterProperty(int propertyId, String propertyName) throws SomeThingWentWrongException {
 		// TODO Auto-generated method stub
 
 		EntityManager em = null;
@@ -33,9 +33,9 @@ public class OrderDAOImpl implements OrderDAO {
 			propertySet.add(property);
 			renter.setPropertySet(propertySet);
 
-			Set<Renter> renterSet = property.getRe();
-			renterSet.add(renter);
-			property.setRe(renterSet);
+//			Set<Renter> renterSet = (Set<Renter>) property.getRe();
+//			renterSet.add(renter);
+//			property.setRe(renterSet);
 
 			EntityTransaction et = em.getTransaction();
 			et.begin();

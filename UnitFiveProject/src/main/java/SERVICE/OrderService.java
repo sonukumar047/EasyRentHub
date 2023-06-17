@@ -4,5 +4,5 @@ import EXCEPTION.SomeThingWentWrongException;
 
 public interface OrderService {
 
-	public void purchaseProperty(int propertyId, String propertyName)throws SomeThingWentWrongException;
+	public void renterProperty(int propertyId, String propertyName)throws SomeThingWentWrongException;
 }

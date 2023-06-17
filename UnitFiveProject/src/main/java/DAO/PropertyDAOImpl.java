@@ -19,7 +19,7 @@ public class PropertyDAOImpl implements PropertyDAO {
 	static EntityManagerFactory emf;
 
 	static {
-		emf = Persistence.createEntityManagerFactory("propertyProject");
+		emf = Persistence.createEntityManagerFactory("PropertyProject");
 	}
 
 	@Override
@@ -89,10 +89,10 @@ public class PropertyDAOImpl implements PropertyDAO {
 				// check if company with same name exists
 				Query query = em.createQuery("SELECT count(s) FROM Property s WHERE propertyName = :propertyName");
 
-				query.setParameter("stockName", property.getPropertyName());
+				query.setParameter("propertyName", property.getPropertyName());
 				if ((Long) query.getSingleResult() > 0) {
 					// you are here means company with given name exists so throw exceptions
-					throw new SomeThingWentWrongException("Car already exists with name " + property.getPropertyName());
+					throw new SomeThingWentWrongException("Property already exists with name " + property.getPropertyName());
 				}
 			}
 
@@ -103,6 +103,7 @@ public class PropertyDAOImpl implements PropertyDAO {
 			propertyFromDB.setPropertyName(property.getPropertyName());
 			propertyFromDB.setPropertlocation(property.getPropertlocation());
 			propertyFromDB.setRentPrice(property.getRentPrice());
+			propertyFromDB.setEstd(property.getEstd());
 			et.commit();
 		} catch (PersistenceException ex) {
 			throw new SomeThingWentWrongException("Unable to process request, try again later");

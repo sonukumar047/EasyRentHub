@@ -9,6 +9,7 @@ public class MainUI {
 		System.out.println("1. Add New Property");
 		System.out.println("2. View All Property");
 		System.out.println("3. Update Property Details");
+		System.out.println("4. View All Renter");
 		System.out.println("5. Delete Property");
 		System.out.println("0. Logout");
 	}
@@ -54,7 +55,7 @@ public class MainUI {
 		if (username.equals("admin") && password.equals("admin")) {
 			adminMenu(sc);
 		} else {
-			System.out.println("Invalid Username of Password");
+			System.out.println("Invalid Username or Password");
 		}
 
 	}
@@ -75,6 +76,7 @@ public class MainUI {
 			case 1:
 				LoginAsAdmin(sc);
 				break;
+				
 			case 2:
 				RenterUI.userLogin(sc);
 				break;

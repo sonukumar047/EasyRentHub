@@ -8,13 +8,13 @@ import EXCEPTION.SomeThingWentWrongException;
 
 public interface RenterDAO {
 
-	void addRenter(Renter customer) throws SomeThingWentWrongException;
+	void addRenter(Renter renter) throws SomeThingWentWrongException;
 
 	List<Object[]> getRenterList() throws SomeThingWentWrongException, NoRecordFoundException;
 
 	void login(String username, String password) throws SomeThingWentWrongException;
 
-	void ViewPurchasedProperty() throws SomeThingWentWrongException, NoRecordFoundException;
+	void ViewRentedProperty() throws SomeThingWentWrongException, NoRecordFoundException;
 
 	void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException;
 

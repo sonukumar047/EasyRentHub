@@ -30,12 +30,23 @@ public class Renter {
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 	
-	@OneToMany(mappedBy = "Renter",cascade = CascadeType.ALL)
+	@Column(name = "is_deleted", nullable = false)
+	private int isDeleted;
+	
+	@OneToMany(mappedBy = "re",cascade = CascadeType.ALL)
 	private Set<Property> propertySet;
 
 	public Renter() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	public Renter(String name, String username, String password, LocalDate dateOfBirth, Set<Property> propertySet) {

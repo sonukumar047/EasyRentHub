@@ -53,7 +53,7 @@ public class RenterUI {
 		}
 	}
 
-	private static void purchaseNewProperty(Scanner sc) {
+	private static void rentNewProperty(Scanner sc) {
 		// TODO Auto-generated method stub
 		System.out.println("Enter Property Id");
 		int id = sc.nextInt();
@@ -61,7 +61,7 @@ public class RenterUI {
 		String propertyName = sc.next();
 		try {
 			OrderService orderService = new OrderServiceImpl();
-			orderService.purchaseProperty(id, propertyName);
+			orderService.renterProperty(id, propertyName);
 			System.out.println("Property purchased Successfully");
 		} catch (SomeThingWentWrongException ex) {
 			System.out.println(ex.getMessage());
@@ -72,7 +72,7 @@ public class RenterUI {
 		// TODO Auto-generated method stub
 		try {
 			RenterService renterService = new RenterServiceImpl();
-			propertyService.ViewRenterProperties();
+			renterService.ViewRentedProperty();
 		} catch (NoRecordFoundException | SomeThingWentWrongException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -131,7 +131,7 @@ public class RenterUI {
 				AdminUI.viewProperty();
 				break;
 			case 2:
-				purchaseNewProperty(sc);
+				rentNewProperty(sc);
 				break;
 			case 3:
 				ViewRenterProperties(sc);
@@ -144,7 +144,7 @@ public class RenterUI {
 				System.out.println("Account Deleted Successfully");
 				break;
 			case 0:
-				LoggedInUserId.loggedInUserId = -1; // -1 id cannot belong to any customer
+				LoggedInUserId.loggedInUserId = -1; 
 				System.out.println("LogedOut Successfully");
 				break;
 			default:
@@ -155,8 +155,8 @@ public class RenterUI {
 	}
 	private static void displayUserMenu() {
 		System.out.println("1. View All Property");
-		System.out.println("2. Purchase a new Property");
-		System.out.println("3. View Purchased Property");
+		System.out.println("2. Rent a new Property");
+		System.out.println("3. View Rented Property");
 		System.out.println("4. Change Password");
 		System.out.println("5. Delete Account");
 		System.out.println("0. Logout");

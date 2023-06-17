@@ -22,15 +22,15 @@ public class AdminUI {
 		System.out.println("Enter rentel price");
 		int rentPrice = sc.nextInt();
 		System.out.print("Enter location ");
-		String propertlocation = sc.next();
+		String propertylocation = sc.next();
 		
-		Property property = new Property(propertyName, estd, rentPrice, propertlocation, null);
+		Property property = new Property(propertyName, estd, rentPrice, propertylocation, null);
 
 //		 Create an object of Service Layer here	
 		PropertyService propertyService = new PropertyServiceImpl();
 		try {
 			propertyService.addProperty(property);
-			System.out.println("Car added successfully");
+			System.out.println("Property added successfully");
 		} catch (SomeThingWentWrongException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -39,11 +39,12 @@ public class AdminUI {
 	public static void viewProperty() {
 		// TODO Auto-generated method stub
 		PropertyService propertyService = new PropertyServiceImpl();
+		
 		try {
-			List<Property> List = propertyService.getPropertyList();
+			List<Property> propertyList = propertyService.getPropertyList();
 			propertyList.forEach(property -> System.out
-					.println("Id: " + property.getId() + " Property Name:" + property.getPropertyName) + " Property manufacturing Year:"
-							+ property.getEstdYear() + " Property Location" + property.geLocation());
+					.println("Id: " + property.getId() + " Property Name:" + property.getPropertyName() + " Property Estd Year:"
+							+ property.getEstd() + "Property Rental Price" + property.getRentPrice()+ "Property Location " + property.getPropertlocation()));
 		} catch (SomeThingWentWrongException | NoRecordFoundException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -68,6 +69,7 @@ public class AdminUI {
 		property.setPropertyName(propertyName);
 		property.setEstd(estd);
 		property.setPropertlocation(propertylocation);
+		property.setRentPrice(rentPrice);
 
 		PropertyService propertyService = new PropertyServiceImpl();
 

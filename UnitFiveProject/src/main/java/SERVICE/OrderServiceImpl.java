@@ -7,11 +7,11 @@ import EXCEPTION.SomeThingWentWrongException;
 public class OrderServiceImpl implements OrderService {
 
 	@Override
-	public void purchaseProperty(int propertyId, String propertyName) throws SomeThingWentWrongException {
+	public void renterProperty(int propertyId, String propertyName) throws SomeThingWentWrongException {
 		// TODO Auto-generated method stub
 
 		OrderDAO orderDAO = new OrderDAOImpl();
-		orderDAO.purchaseProperty(propertyId, propertyName);
+		orderDAO.renterProperty(propertyId, propertyName);
 		
 	}
 

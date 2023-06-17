@@ -12,7 +12,7 @@ public interface RenterService {
 
 	void login(String username, String password) throws SomeThingWentWrongException, NoRecordFoundException;
 
-	void ViewPurchasedProperty() throws SomeThingWentWrongException, NoRecordFoundException;
+	void ViewRentedProperty() throws SomeThingWentWrongException, NoRecordFoundException;
 
 	
 
