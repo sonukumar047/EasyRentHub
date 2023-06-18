@@ -15,13 +15,13 @@ public class AdminUI {
 
 	public static void addProperty(Scanner sc) {
 		// TODO Auto-generated method stub
-		System.out.print("Enter property name ");
+		System.out.print(ConsoleColors.BLUE_ITALIC+"Enter property name "+ConsoleColors.RESET);
 		String propertyName = sc.next();
-		System.out.print("Enter ESTD year");
+		System.out.print(ConsoleColors.BLUE_ITALIC+"Enter ESTD year"+ConsoleColors.RESET);
 		int estd = sc.nextInt();
-		System.out.println("Enter rentel price");
+		System.out.println(ConsoleColors.BLUE_ITALIC+"Enter rentel price"+ConsoleColors.RESET);
 		int rentPrice = sc.nextInt();
-		System.out.print("Enter location ");
+		System.out.print(ConsoleColors.BLUE_ITALIC+"Enter location "+ConsoleColors.RESET);
 		String propertylocation = sc.next();
 		
 		Property property = new Property(propertyName, estd, rentPrice, propertylocation, null);
@@ -30,7 +30,7 @@ public class AdminUI {
 		PropertyService propertyService = new PropertyServiceImpl();
 		try {
 			propertyService.addProperty(property);
-			System.out.println("Property added successfully");
+			System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"Property Added Successfully"+ConsoleColors.RESET);
 		} catch (SomeThingWentWrongException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -52,15 +52,15 @@ public class AdminUI {
 
 	public static void updatePropertyDetails(Scanner sc) {
 		// TODO Auto-generated method stub
-		System.out.print("Enter id ");
+		System.out.print(ConsoleColors.PURPLE_ITALIC+"Enter id "+ConsoleColors.RESET);
 		int id = sc.nextInt();
-		System.out.print("Enter property name ");
+		System.out.print(ConsoleColors.PURPLE_ITALIC+"Enter property name "+ConsoleColors.RESET);
 		String propertyName = sc.next();
-		System.out.print("Enter ESTD year");
+		System.out.print(ConsoleColors.PURPLE_ITALIC+"Enter ESTD year"+ConsoleColors.RESET);
 		int estd = sc.nextInt();
-		System.out.println("Enter rentel price");
+		System.out.println(ConsoleColors.PURPLE_ITALIC+"Enter rentel price"+ConsoleColors.RESET);
 		int rentPrice = sc.nextInt();
-		System.out.print("Enter location ");
+		System.out.print(ConsoleColors.PURPLE_ITALIC+"Enter location "+ConsoleColors.RESET);
 		String propertylocation = sc.next();
 
 		// code to create Company Entity object
@@ -75,7 +75,7 @@ public class AdminUI {
 
 		try {
 			propertyService.updateProperty(property);
-			System.out.println("property updated successfully");
+			System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"property updated successfully"+ConsoleColors.BANANA_YELLOW+" \uD83C\uDFC6"+ConsoleColors.RESET);
 		} catch (SomeThingWentWrongException | NoRecordFoundException ex) {
 			System.out.println(ex.getMessage());
 		}
@@ -84,13 +84,13 @@ public class AdminUI {
 
 	public static void DeletePropertyById(Scanner sc) {
 		// TODO Auto-generated method stub
-		System.out.println("Enter property Id");
+		System.out.println(ConsoleColors.BLACK_ITALIC+"Enter property Id"+ConsoleColors.RESET);
 		int id = sc.nextInt();
 
 		PropertyService propertyService = new PropertyServiceImpl();
 		try {
 			propertyService.DeletePropertyById(id);
-			System.out.println("property Deleted Successfully");
+			System.out.println(ConsoleColors.RED_BOLD_BRIGHT+"Property Deleted Successfully"+ConsoleColors.RED+" \u2717"+ConsoleColors.RESET);
 		} catch (SomeThingWentWrongException | NoRecordFoundException ex) {
 			System.out.println(ex.getMessage());
 		}
