@@ -1,3 +1,5 @@
+![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsipsY1sIEQUYjznCzSkdVmN01ALXJvVCuhQ&usqp=CAU)
+
 # EasyRentHub
 EasyRentHub is a housing system application that allows users to view and manage property rentals. It provides features for both administrators and renters to perform various tasks related to property management.
 
@@ -57,6 +59,11 @@ The application uses color codes to enhance the user interface. Here are the col
 - ConsoleColors.BRIGHT_CYAN: Bright cyan color.
 - ConsoleColors.BRIGHT_WHITE: Bright white color.
 - ConsoleColors.RESET: Reset color to default.
+
+
+## Tech Stack
+
+**Client:** Java, Hibernate, MySQL
 
 ## Dependencies
 The EasyRentHub application uses the following dependencies:
