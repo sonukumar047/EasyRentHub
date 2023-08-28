@@ -32,6 +32,9 @@ As a renter, you have the following options:
 - changePassword: Change the renter's account password.
 - deleteAccount: Delete the renter's account.
 
+## E-R  Diagram
+![logo]()
+
 ## Usage
 Upon running the application, you will be presented with a menu where you can choose to login as an administrator or a renter. The menu options are displayed using various colors to enhance the user interface.
 
