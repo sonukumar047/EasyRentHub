@@ -32,7 +32,7 @@ public class AdminUI {
 			propertyService.addProperty(property);
 			System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+"Property Added Successfully"+ConsoleColors.RESET);
 		} catch (SomeThingWentWrongException ex) {
-			System.out.println(ex.getMessage());
+			System.out.println(ex.getMessage() );
 		}
 	}
 
@@ -82,6 +82,8 @@ public class AdminUI {
 
 	}
 
+	
+	
 	public static void DeletePropertyById(Scanner sc) {
 		// TODO Auto-generated method stub
 		System.out.println(ConsoleColors.BLACK_ITALIC+"Enter property Id"+ConsoleColors.RESET);
