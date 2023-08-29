@@ -82,6 +82,8 @@ public class AdminUI {
 
 	}
 
+	
+	
 	public static void DeletePropertyById(Scanner sc) {
 		// TODO Auto-generated method stub
 		System.out.println(ConsoleColors.BLACK_ITALIC+"Enter property Id"+ConsoleColors.RESET);
