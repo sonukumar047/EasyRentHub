@@ -26,7 +26,7 @@ public class RenterServiceImpl implements RenterService {
 
 	@Override
 	public void ViewRentedProperty() throws SomeThingWentWrongException, NoRecordFoundException {
-		// TODO Auto-generated method stub
+	
 		RenterDAO renterDAO = new RenterDAOImpl();
 		renterDAO.ViewRentedProperty();		
 	}
