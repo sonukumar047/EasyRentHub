@@ -4,6 +4,7 @@ import java.util.List;
 
 import DAO.RenterDAO;
 import DAO.RenterDAOImpl;
+import ENTITY.LoggedInUserId;
 import ENTITY.Renter;
 import EXCEPTION.NoRecordFoundException;
 import EXCEPTION.SomeThingWentWrongException;
@@ -33,12 +34,23 @@ public class RenterServiceImpl implements RenterService {
 
 
 	@Override
-	public void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException {
-		// TODO Auto-generated method stub
+    public void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException {
+        // Retrieve renter by ID
 		RenterDAO renterDAO = new RenterDAOImpl();
-		renterDAO.changePassword( oldPassword,  newPassword);
-		
-	}
+        Renter renter = renterDAO.findById(LoggedInUserId.loggedInUserId);
+        
+        // Verify old password
+        if (!renter.verifyPassword(oldPassword)) {
+            throw new SomeThingWentWrongException("Invalid old password");
+        }
+        
+        // Set new hashed password
+        renter.setPassword(newPassword);
+        
+        renterDAO.updateRenter(renter); // Update the renter in the database
+    }
+	
+	
 
 	@Override
 	public void deleteAccount() throws SomeThingWentWrongException {
