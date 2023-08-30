@@ -3,6 +3,8 @@ package ENTITY;
 import java.time.LocalDate;
 import java.util.Set;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -86,9 +88,13 @@ public class Renter {
 		return password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	 public void setPassword(String password) {
+	        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+	    }
+
+	    public boolean verifyPassword(String password) {
+	        return BCrypt.checkpw(password, this.password);
+	    }
 
 	public LocalDate getDateOfBirth() {
 		return dateOfBirth;

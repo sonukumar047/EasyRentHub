@@ -19,5 +19,9 @@ public interface RenterDAO {
 	void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException;
 
 	void deleteAccount() throws SomeThingWentWrongException;
+	
+	Renter findById(int id) throws SomeThingWentWrongException;
+	
+	void updateRenter(Renter renter) throws SomeThingWentWrongException;
 
 }

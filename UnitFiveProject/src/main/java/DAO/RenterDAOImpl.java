@@ -85,13 +85,41 @@ public class RenterDAOImpl implements RenterDAO {
 
 	
 
+//	@Override
+//	public void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException {
+//		// TODO Auto-generated method stub
+//		EntityManager em = null;
+//		try {
+//			em = EMUtils.getEntityManager();
+//			Query query = em.createQuery("SELECT count(r) FROM Renter r WHERE password = :oldPassword AND id = :id");
+//			query.setParameter("oldPassword", oldPassword);
+//			query.setParameter("id", LoggedInUserId.loggedInUserId);
+//			Long userCount = (Long) query.getSingleResult();
+//			if (userCount == 0) {
+//				// you are here old password is incorrect for logged in user
+//				throw new SomeThingWentWrongException("Invalid old password");
+//			}
+//			// You are here means all checks done, We can proceed for changing the password
+//			Renter renter = em.find(Renter.class, LoggedInUserId.loggedInUserId);
+//			EntityTransaction et = em.getTransaction();
+//			et.begin();
+//			renter.setPassword(newPassword);
+//			et.commit();
+//		} catch (PersistenceException ex) {
+//			throw new SomeThingWentWrongException("Unable to process request, try again later");
+//		} finally {
+//			em.close();
+//		}
+//
+//	}
+	
 	@Override
 	public void changePassword(String oldPassword, String newPassword) throws SomeThingWentWrongException {
-		// TODO Auto-generated method stub
-		EntityManager em = null;
-		try {
-			em = EMUtils.getEntityManager();
-			Query query = em.createQuery("SELECT count(r) FROM Renter r WHERE password = :oldPassword AND id = :id");
+	    EntityManager em = null;
+	    try {
+	        em = EMUtils.getEntityManager();
+	        // ... other code
+	        Query query = em.createQuery("SELECT count(r) FROM Renter r WHERE password = :oldPassword AND id = :id");
 			query.setParameter("oldPassword", oldPassword);
 			query.setParameter("id", LoggedInUserId.loggedInUserId);
 			Long userCount = (Long) query.getSingleResult();
@@ -99,19 +127,23 @@ public class RenterDAOImpl implements RenterDAO {
 				// you are here old password is incorrect for logged in user
 				throw new SomeThingWentWrongException("Invalid old password");
 			}
-			// You are here means all checks done, We can proceed for changing the password
-			Renter renter = em.find(Renter.class, LoggedInUserId.loggedInUserId);
-			EntityTransaction et = em.getTransaction();
-			et.begin();
-			renter.setPassword(newPassword);
-			et.commit();
-		} catch (PersistenceException ex) {
-			throw new SomeThingWentWrongException("Unable to process request, try again later");
-		} finally {
-			em.close();
-		}
-
+	        
+	        Renter renter = em.find(Renter.class, LoggedInUserId.loggedInUserId);
+	        if (!renter.verifyPassword(oldPassword)) {
+	            throw new SomeThingWentWrongException("Invalid old password");
+	        }
+	        
+	        EntityTransaction et = em.getTransaction();
+	        et.begin();
+	        renter.setPassword(newPassword); // Set the new hashed password
+	        et.commit();
+	    } catch (PersistenceException ex) {
+	        throw new SomeThingWentWrongException("Unable to process request, try again later");
+	    } finally {
+	        em.close();
+	    }
 	}
+
 
 	@Override
 	public void deleteAccount() throws SomeThingWentWrongException {
@@ -158,6 +190,39 @@ public class RenterDAOImpl implements RenterDAO {
 		}
 		
 	}
+	
 
+    @Override
+    public Renter findById(int id) throws SomeThingWentWrongException {
+        EntityManager em = null;
+        try {
+            em = EMUtils.getEntityManager();
+            return em.find(Renter.class, id);
+        } catch (PersistenceException ex) {
+            throw new SomeThingWentWrongException("Unable to process request, try again later");
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public void updateRenter(Renter renter) throws SomeThingWentWrongException {
+        EntityManager em = null;
+        try {
+            em = EMUtils.getEntityManager();
+            EntityTransaction et = em.getTransaction();
+            et.begin();
+            em.merge(renter);
+            et.commit();
+        } catch (PersistenceException ex) {
+            throw new SomeThingWentWrongException("Unable to process request, try again later");
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 	
 }
