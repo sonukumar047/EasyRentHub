@@ -1,7 +1,7 @@
 ![Logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsipsY1sIEQUYjznCzSkdVmN01ALXJvVCuhQ&usqp=CAU)
 
 # EasyRentHub
-EasyRentHub is a housing system application that allows users to view and manage property rentals. It provides features for both administrators and renters to perform various tasks related to property management.
+EasyRentHub is a housing system Java application that allows users to view and manage property rentals. It provides features for both administrators and renters to perform various tasks related to property management.
 
 ## Getting Started
 To use the EasyRentHub application, follow the instructions below:
